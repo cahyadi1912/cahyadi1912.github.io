@@ -1,0 +1,225 @@
+body{
+  margin:0;
+  background-color: #F4F4F2;
+}
+h1{
+  text-align:center;
+  background-color: #495464;
+  color: #F4F4F2;
+  padding: 20px;
+  margin: 0;
+}
+
+table, th, td {
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 0.2rem;
+}
+
+
+#leftpanel{
+  float: left;
+  text-align: center;
+  display: inline-block;
+  width: 30%;
+}
+
+#rightpanel{
+  float: left;
+  display: inline-block;
+  width: 65%;
+}
+
+#pageselectordiv{
+  margin: 30px;
+  padding: 30px;
+  background-color: #BBBFCA;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 8px #888888;
+}
+
+#storydiv{
+  text-align:left;
+  margin: 30px;
+  background-color: #BBBFCA;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 8px #888888;
+  padding: 20px;
+}
+
+
+#yearselectordiv{
+  margin: 30px;
+  background-color: #BBBFCA;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 8px #888888;
+}
+
+.pageselectorbutton{
+  background-color: #E8E8E8;
+  border-radius: 3px;
+  padding: 7px;
+}
+
+.pageselectorbuttonpressed{
+  background-color: black;
+  color: white;
+}
+
+
+#yearselector{
+  width: 60%;
+  margin:5%;
+  background-color: black;
+}
+
+#simulatebutton{
+  margin:5%;
+  background-color: #E8E8E8;
+  border-radius: 3px;
+  padding: 7px;
+}
+
+.hidden{
+  display: None;
+}
+
+
+#scatterplotsvg{
+  width: 1200px;
+  height: 800px;
+}
+
+#barchartsvg{
+  width: 1300px;
+  height: 800px;
+}
+
+.scatterplotdatapoint{
+  stroke:black;
+  position: absolute;
+  z-index: 5;
+}
+
+.scatterplotdatapoint:hover{
+  stroke-width:3px;
+}
+
+.barchartdatapoint {
+  fill:#3F72AF;
+}
+
+/*-- Scatter plot color based on regions */
+.southasia{
+  fill: yellow;
+}
+.eastasiapacific{
+  fill: blue;
+}
+.europecentralasia{
+  fill: orange;
+}
+.latinamericacaribbean{
+  fill: red;
+}
+.middleeastnorthafrica{
+  fill: lightblue;
+}
+.northamerica{
+  fill: green;
+}
+.subsaharanafrica{
+  fill: purple;
+}
+
+#scatterPlotTooltip {
+  font-size: 0.75rem;
+  opacity: 0;
+  position: absolute;
+  text-align: left;
+  display:inline-block;
+  background-color: #F5F7B2;
+  padding: 5px;
+}
+
+#barChartTooltip{
+  font-size: 0.75rem;
+  opacity: 0;
+  position: absolute;
+  text-align: left;
+  display:inline-block;
+  background-color: #F5F7B2;
+  /*border: solid black 1px;*/
+  padding: 5px;
+}
+
+#barcharttitle, #scatterplottitle{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#barchartxaxislabel, #scatterplotxaxislabel, #scatterplotyaxislabel{
+  font-weight: bold;
+}
+
+#barchartyaxis{
+  font-size: 0.7rem;
+}
+
+.barchartlabelvalue{
+  font-size: 0.8rem;
+}
+
+.annotationnote{
+  display:  inline-block;
+  position: absolute;
+  text-align: left;
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.annotationconnector{
+  stroke: gray;
+  stroke-width: 2px;
+}
+
+.annotationline{
+  stroke: black;
+  stroke-width: 3px;
+  stroke-dasharray: 4;
+}
+
+
+.annotationarea{
+  opacity: 0.6;
+  fill: gray;
+}
+
+#mortalitygdptrendannotationline{
+  stroke-width: 12px;
+  stroke: gray;
+}
+
+#arrow{
+  fill: gray;
+}
+
+
+.regiontextlegend{
+  font-size: 0.8rem;
+
+}
+
+#barcharttotalmortality{
+  font-size: 3rem;
+  fill: gray;
+}
+
+#labelBarChartToolTip{
+  font-weight: bold;
+  line-height: 2;
+}
