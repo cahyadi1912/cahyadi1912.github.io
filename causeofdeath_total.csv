@@ -1,0 +1,267 @@
+CauseOfDeath,Year,Value
+Acute lower respiratory infections,2000,1755351.559
+Acute lower respiratory infections,2001,1683709.1239999991
+Acute lower respiratory infections,2002,1613226.6779999996
+Acute lower respiratory infections,2003,1545503.0139999997
+Acute lower respiratory infections,2004,1484425.46
+Acute lower respiratory infections,2005,1423979.656
+Acute lower respiratory infections,2006,1375834.0309999993
+Acute lower respiratory infections,2007,1319053.1170000003
+Acute lower respiratory infections,2008,1260045.7939999998
+Acute lower respiratory infections,2009,1207542.02
+Acute lower respiratory infections,2010,1156697.4030000004
+Acute lower respiratory infections,2011,1104534.9926999998
+Acute lower respiratory infections,2012,1047448.1999999997
+Acute lower respiratory infections,2013,988262.368
+Acute lower respiratory infections,2014,937098.3059999999
+Acute lower respiratory infections,2015,872128.8540000005
+Acute lower respiratory infections,2016,840778.5440000003
+Acute lower respiratory infections,2017,808693.2940000005
+Birth asphyxia and birth trauma,2000,1131736.9500000002
+Birth asphyxia and birth trauma,2001,1102070.4399999997
+Birth asphyxia and birth trauma,2002,1070456.3600000003
+Birth asphyxia and birth trauma,2003,1036728.4499999995
+Birth asphyxia and birth trauma,2004,1003394.0199999998
+Birth asphyxia and birth trauma,2005,970307.5900000001
+Birth asphyxia and birth trauma,2006,942007.1199999999
+Birth asphyxia and birth trauma,2007,913067.5600000002
+Birth asphyxia and birth trauma,2008,884458.3099999998
+Birth asphyxia and birth trauma,2009,855922.7500000001
+Birth asphyxia and birth trauma,2010,826343.8900000001
+Birth asphyxia and birth trauma,2011,797433.3400000002
+Birth asphyxia and birth trauma,2012,769838.46
+Birth asphyxia and birth trauma,2013,746199.6000000002
+Birth asphyxia and birth trauma,2014,724977.3299999998
+Birth asphyxia and birth trauma,2015,704626.9199999992
+Birth asphyxia and birth trauma,2016,687462.6399999998
+Birth asphyxia and birth trauma,2017,671504.41
+Congenital anomalies,2000,571330.2100000003
+Congenital anomalies,2001,564793.6400000002
+Congenital anomalies,2002,557339.8899999998
+Congenital anomalies,2003,547431.7699999999
+Congenital anomalies,2004,542567.19
+Congenital anomalies,2005,536181.7499999998
+Congenital anomalies,2006,533672.25
+Congenital anomalies,2007,528968.9799999999
+Congenital anomalies,2008,523279.4300000001
+Congenital anomalies,2009,517881.4199999998
+Congenital anomalies,2010,517225.37
+Congenital anomalies,2011,513530.3799999999
+Congenital anomalies,2012,507750.1999999999
+Congenital anomalies,2013,503994.17199999996
+Congenital anomalies,2014,501620.60699999984
+Congenital anomalies,2015,499032.63499999995
+Congenital anomalies,2016,489915.73199999984
+Congenital anomalies,2017,474225.1119999998
+Diarrhoeal diseases,2000,1199961.2409999997
+Diarrhoeal diseases,2001,1126442.36
+Diarrhoeal diseases,2002,1058763.4440000004
+Diarrhoeal diseases,2003,991680.9905999999
+Diarrhoeal diseases,2004,929955.9394999999
+Diarrhoeal diseases,2005,872588.8424999998
+Diarrhoeal diseases,2006,824634.0863999996
+Diarrhoeal diseases,2007,776680.6003000004
+Diarrhoeal diseases,2008,730744.0292000002
+Diarrhoeal diseases,2009,692758.3151
+Diarrhoeal diseases,2010,655344.7285
+Diarrhoeal diseases,2011,619797.519
+Diarrhoeal diseases,2012,582324.4220000001
+Diarrhoeal diseases,2013,554427.67
+Diarrhoeal diseases,2014,524503.1559999998
+Diarrhoeal diseases,2015,496875.64300000004
+Diarrhoeal diseases,2016,470680.89999999997
+Diarrhoeal diseases,2017,440524.73699999985
+HIV/AIDS,2000,232760.94000000006
+HIV/AIDS,2001,237001.61000000004
+HIV/AIDS,2002,238355.6700000001
+HIV/AIDS,2003,236716.94999999995
+HIV/AIDS,2004,231862.89
+HIV/AIDS,2005,223748.55000000002
+HIV/AIDS,2006,213114.38800000004
+HIV/AIDS,2007,197210.47700000004
+HIV/AIDS,2008,178306.88900000008
+HIV/AIDS,2009,158690.04000000007
+HIV/AIDS,2010,145055.171
+HIV/AIDS,2011,126781.64000000001
+HIV/AIDS,2012,110718.42000000004
+HIV/AIDS,2013,97294.4
+HIV/AIDS,2014,89504.65999999999
+HIV/AIDS,2015,82501.68000000001
+HIV/AIDS,2016,76407.56
+HIV/AIDS,2017,75360.71999999997
+Injuries,2000,448310.5249999999
+Injuries,2001,434560.88599999994
+Injuries,2002,420799.065
+Injuries,2003,407163.543
+Injuries,2004,429320.3320000001
+Injuries,2005,390048.0209999999
+Injuries,2006,384871.2307
+Injuries,2007,378480.02049999987
+Injuries,2008,394848.45020000014
+Injuries,2009,370250.74000000005
+Injuries,2010,400689.2100000001
+Injuries,2011,362988.37000000005
+Injuries,2012,357748.62000000017
+Injuries,2013,355726.89
+Injuries,2014,353164.3700000002
+Injuries,2015,352631.60500000004
+Injuries,2016,345650.75799999974
+Injuries,2017,336270.15499999997
+Malaria,2000,656273.8100000002
+Malaria,2001,656923.1999999998
+Malaria,2002,655634.4
+Malaria,2003,647320.4
+Malaria,2004,640782.03
+Malaria,2005,615011.53
+Malaria,2006,590496.99
+Malaria,2007,553935.4
+Malaria,2008,508339.5
+Malaria,2009,475624.93
+Malaria,2010,440981.95
+Malaria,2011,402206.24
+Malaria,2012,369336.06
+Malaria,2013,342048.97000000003
+Malaria,2014,319104.31999999995
+Malaria,2015,298278.89999999997
+Malaria,2016,278840.92000000004
+Malaria,2017,263180.57000000007
+Measles,2000,482939.4900000001
+Measles,2001,471435.5699999999
+Measles,2002,436201.31999999995
+Measles,2003,476800.1599999999
+Measles,2004,311273.52999999997
+Measles,2005,351453.29000000015
+Measles,2006,221175.20999999993
+Measles,2007,140121.38
+Measles,2008,159184.16000000003
+Measles,2009,163367.4500000001
+Measles,2010,134417.15
+Measles,2011,191072.88
+Measles,2012,131046.70000000001
+Measles,2013,147710.44999999992
+Measles,2014,136657.37
+Measles,2015,140344.87999999995
+Measles,2016,144608.47
+Measles,2017,91648.54000000005
+Meningitis/encephalitis,2000,340297.0080000001
+Meningitis/encephalitis,2001,330817.8010000001
+Meningitis/encephalitis,2002,321039.25800000003
+Meningitis/encephalitis,2003,319204.04299999995
+Meningitis/encephalitis,2004,299585.94099999993
+Meningitis/encephalitis,2005,292858.8090000002
+Meningitis/encephalitis,2006,258503.862
+Meningitis/encephalitis,2007,247746.97899999993
+Meningitis/encephalitis,2008,251571.138
+Meningitis/encephalitis,2009,225284.37600000002
+Meningitis/encephalitis,2010,201499.90280000004
+Meningitis/encephalitis,2011,188472.43430000002
+Meningitis/encephalitis,2012,190310.90399999998
+Meningitis/encephalitis,2013,171176.19200000004
+Meningitis/encephalitis,2014,147839.807
+Meningitis/encephalitis,2015,142497.61
+Meningitis/encephalitis,2016,126994.58300000006
+Meningitis/encephalitis,2017,129780.22899999999
+"Other communicable, perinatal and nutritional conditions",2000,800227.8410000002
+"Other communicable, perinatal and nutritional conditions",2001,776362.845
+"Other communicable, perinatal and nutritional conditions",2002,752048.7420000002
+"Other communicable, perinatal and nutritional conditions",2003,726723.5770000002
+"Other communicable, perinatal and nutritional conditions",2004,700942.6360000004
+"Other communicable, perinatal and nutritional conditions",2005,676411.226
+"Other communicable, perinatal and nutritional conditions",2006,657888.8350000002
+"Other communicable, perinatal and nutritional conditions",2007,639901.4539999999
+"Other communicable, perinatal and nutritional conditions",2008,624156.013
+"Other communicable, perinatal and nutritional conditions",2009,612160.6119999996
+"Other communicable, perinatal and nutritional conditions",2010,600364.1708000003
+"Other communicable, perinatal and nutritional conditions",2011,587132.1801999998
+"Other communicable, perinatal and nutritional conditions",2012,571909.4500000002
+"Other communicable, perinatal and nutritional conditions",2013,566616.3599999999
+"Other communicable, perinatal and nutritional conditions",2014,562586.5400000004
+"Other communicable, perinatal and nutritional conditions",2015,554881.0699999998
+"Other communicable, perinatal and nutritional conditions",2016,545883.04
+"Other communicable, perinatal and nutritional conditions",2017,529958.1199999999
+Other noncommunicable diseases,2000,341657.5900000001
+Other noncommunicable diseases,2001,334305.83999999997
+Other noncommunicable diseases,2002,325353.81000000006
+Other noncommunicable diseases,2003,317556.93999999994
+Other noncommunicable diseases,2004,311141.57000000007
+Other noncommunicable diseases,2005,303621.4100000002
+Other noncommunicable diseases,2006,297903.4599999998
+Other noncommunicable diseases,2007,292473.11999999994
+Other noncommunicable diseases,2008,287423.5899999999
+Other noncommunicable diseases,2009,284987.9199999999
+Other noncommunicable diseases,2010,280177.16
+Other noncommunicable diseases,2011,276558.9699999999
+Other noncommunicable diseases,2012,272255.8100000001
+Other noncommunicable diseases,2013,267499.9299999997
+Other noncommunicable diseases,2014,263154.59000000014
+Other noncommunicable diseases,2015,258590.29499999995
+Other noncommunicable diseases,2016,253373.33499999993
+Other noncommunicable diseases,2017,246276.2049999999
+Pertussis,2000,1533.53
+Pertussis,2001,7490.109999999999
+Pertussis,2002,5887.78
+Pertussis,2003,9517.96
+Pertussis,2004,10960.48
+Pertussis,2005,12644.130000000001
+Pertussis,2006,4012.92
+Pertussis,2007,10903.73
+Pertussis,2008,3172.48
+Pertussis,2009,5553.23
+Pertussis,2010,7510.46
+Pertussis,2011,2984.36
+Pertussis,2012,9122.63
+Pertussis,2013,10786.41
+Prematurity,2000,1367820.73
+Prematurity,2001,1339746.1
+Prematurity,2002,1310999.4599999997
+Prematurity,2003,1284017.7799999998
+Prematurity,2004,1258138.5199999998
+Prematurity,2005,1235473.07
+Prematurity,2006,1213176.4700000002
+Prematurity,2007,1192994.2399999998
+Prematurity,2008,1170883.1599999995
+Prematurity,2009,1149672.0000000002
+Prematurity,2010,1133019.4900000002
+Prematurity,2011,1114854.4599999997
+Prematurity,2012,1096421.0400000003
+Prematurity,2013,1075585.98
+Prematurity,2014,1049801.4899999995
+Prematurity,2015,1022837.0000000003
+Prematurity,2016,992488.9099999998
+Prematurity,2017,964366.7799999998
+Sepsis and other infectious conditions of the newborn,2000,481948.0419999997
+Sepsis and other infectious conditions of the newborn,2001,478937.71299999976
+Sepsis and other infectious conditions of the newborn,2002,476441.45399999997
+Sepsis and other infectious conditions of the newborn,2003,472991.0039999999
+Sepsis and other infectious conditions of the newborn,2004,469714.22400000005
+Sepsis and other infectious conditions of the newborn,2005,464795.8640000003
+Sepsis and other infectious conditions of the newborn,2006,457524.69500000007
+Sepsis and other infectious conditions of the newborn,2007,452097.84500000015
+Sepsis and other infectious conditions of the newborn,2008,446417.04599999974
+Sepsis and other infectious conditions of the newborn,2009,438497.08599999995
+Sepsis and other infectious conditions of the newborn,2010,426115.007
+Sepsis and other infectious conditions of the newborn,2011,410967.0270000002
+Sepsis and other infectious conditions of the newborn,2012,395767.20700000005
+Sepsis and other infectious conditions of the newborn,2013,382553.0880000001
+Sepsis and other infectious conditions of the newborn,2014,373043.6879999999
+Sepsis and other infectious conditions of the newborn,2015,364185.379
+Sepsis and other infectious conditions of the newborn,2016,357774.99899999995
+Sepsis and other infectious conditions of the newborn,2017,349950.1589999999
+Tetanus,2000,172499.94600000005
+Tetanus,2001,153446.9580000001
+Tetanus,2002,135539.97699999993
+Tetanus,2003,118817.40599999997
+Tetanus,2004,103321.46499999997
+Tetanus,2005,90872.294
+Tetanus,2006,80881.42400000004
+Tetanus,2007,72483.41299999997
+Tetanus,2008,64891.083
+Tetanus,2009,58470.882000000005
+Tetanus,2010,53721.33099999999
+Tetanus,2011,50151.111
+Tetanus,2012,46587.100000000006
+Tetanus,2013,42510.96400000001
+Tetanus,2014,38227.07299999999
+Tetanus,2015,34318.53700000001
+Tetanus,2016,31809.59000000001
+Tetanus,2017,31258.422999999995
