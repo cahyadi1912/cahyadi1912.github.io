@@ -10,6 +10,10 @@ h1{
   margin: 0;
 }
 
+h3{
+  text-align: center;
+}
+
 table, th, td {
   text-align: center;
   border: 1px solid black;
