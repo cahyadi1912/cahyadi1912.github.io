@@ -282,10 +282,12 @@ function createScatterPlot(year) {
   .attr("transform", "translate(" + scatterPlotLeftMargin + "," + scatterPlotTopMargin + ")" )
   .call(yaxis)
 
+
   svg.append("g")
   .attr("class", "xaxis")
   .attr("transform", "translate(" + scatterPlotLeftMargin + "," + (scatterPlotTopMargin + scatterPlotHeight) + ")" )
-  .call(xaxis);
+  .call(xaxis)
+
 
   // Bar chart main title ("Cause of Mortality")
   svg.append("text")
@@ -300,9 +302,16 @@ function createScatterPlot(year) {
   svg.append("text")
   .attr("id", "scatterplotxaxislabel")
   .attr("transform", "translate(" + (scatterPlotLeftMargin + (scatterPlotWidth/2)) + " ," +
-                       (scatterPlotTopMargin + scatterPlotHeight + 50) + ")")
+                       (scatterPlotTopMargin + scatterPlotHeight + 40) + ")")
   .style("text-anchor", "middle")
   .text("GDP per Capita");
+
+  svg.append("text")
+  .attr("class", "tooltipreminder")
+  .attr("transform", "translate(" + (scatterPlotLeftMargin + (scatterPlotWidth/2)) + " ," +
+                       (scatterPlotTopMargin + scatterPlotHeight + 60) + ")")
+  .style("text-anchor", "middle")
+  .text("(hover on data points to see country-specific detailed information)");
 
   // Y axis label
   svg.append("text")
@@ -554,9 +563,17 @@ function createBarChart(year) {
   svg.append("text")
   .attr("id", "barchartxaxislabel")
   .attr("transform", "translate(" + (barChartLeftMargin + (barChartWidth/2)) + " ," +
-                       (barChartTopMargin + barChartHeight + 50) + ")")
+                       (barChartTopMargin + barChartHeight + 40) + ")")
   .style("text-anchor", "middle")
   .text("Mortality");
+
+  svg.append("text")
+  .attr("class", "tooltipreminder")
+  .attr("transform", "translate(" + (barChartLeftMargin + (barChartWidth/2)) + " ," +
+                       (barChartTopMargin + barChartHeight + 60) + ")")
+  .style("text-anchor", "middle")
+  .text("(hover on the bar to see detailed information)");
+
 
   // Label values for each bar
   canvas.selectAll(".barchartlabelvalue")
@@ -659,7 +676,7 @@ function simulateProgressBarChart() {
   d3.select("#barchartsvg").select("#barchartcanvas").selectAll(".barchartdatapoint")
   .data(data)
   .transition()
-  .duration(1000)
+  .duration(500)
   .attr("x", 0 )
   .attr("y", function(d, i) { return barChartYScale(d.CauseOfDeath) + 2; })
   .attr("width", function(d, i){ return barChartXScale(d.Value); } )
@@ -682,7 +699,7 @@ function simulateProgressBarChart() {
   d3.select("#barchartsvg").select("#barchartcanvas").selectAll(".barchartlabelvalue")
   .data(data)
   .transition()
-  .duration(1000)
+  .duration(500)
   .attr('x', function(d) { return barChartXScale(d.Value) + 5; } )
   .attr('y', function(d) {return barChartYScale(d.CauseOfDeath) + barChartYScale.bandwidth() / 2 + 5; })
   .style("text-anchor", "start")

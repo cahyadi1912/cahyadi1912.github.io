@@ -166,6 +166,11 @@ table, th, td {
   font-weight: bold;
 }
 
+.tooltipreminder{
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
 #barchartyaxis{
   font-size: 0.7rem;
 }
