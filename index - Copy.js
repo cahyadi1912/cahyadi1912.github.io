@@ -11,6 +11,8 @@ const scatterPlotLeftMargin = 100;
 const scatterPlotRightMargin = 75;
 const scatterPlotTopMargin = 100;
 const scatterPlotBottomMargin = 75;
+
+
 const scatterPlotHeight = scatterPlotSvgHeight - scatterPlotTopMargin - scatterPlotBottomMargin;
 const scatterPlotWidth = scatterPlotSvgWidth - scatterPlotLeftMargin - scatterPlotRightMargin;
 var scatterPlotYScale;
@@ -29,7 +31,6 @@ var barChartTooltip = d3.select("#barchartdiv").append("div")
                          .attr("id", "barChartTooltip");
 
 
-// Prepare barchart tooltip
 barChartTooltip.append("label")
               .attr("id", "labelBarChartToolTip")
               .html("Top 10 countries for this cause of death:")
@@ -78,7 +79,6 @@ document.querySelectorAll(".pageselectorbutton").forEach(
 );
 
 // logic around year year selection
-// Generate year range slider
 yearSelector = document.getElementById("yearselector");
 yearSelector.min = years[0];
 yearSelector.max = years[years.length-1];
@@ -93,13 +93,11 @@ years.forEach(function(year) {
 
 document.getElementById("selectedyear").value = years[0];
 
-// Update year slider component to point to the selected year
 function updateYearSelectorComponent(value) {
   document.getElementById("selectedyear").value = value;
   document.getElementById("yearselector").value = value;
 }
 
-// This function will be called when the user slide year
 function selectYear(value){
   updateYearSelectorComponent(value);
   selectedYear = +value;
@@ -112,15 +110,20 @@ function selectYear(value){
 
 }
 
-
-// Simulate button
+// Simulate buttonnext
 document.getElementById("simulatebutton").addEventListener("click", function(){
   switch (selectedPageNr){
     case 2:
-      simulateProgressScatterPlot(years[0]);
+      selectedYear = years[0];
+      updateYearSelectorComponent(selectedYear)
+      createScatterPlot(selectedYear);
+      simulateProgressScatterPlot();
       break;
     case 3:
-      simulateProgressBarChart(years[0]);
+      selectedYear = years[0];
+      updateYearSelectorComponent(selectedYear)
+      createBarChart(selectedYear);
+      simulateProgressBarChart();
       break;
   }
 })
@@ -145,9 +148,9 @@ function initializePage() {
       d3.select("#usaannotation").selectAll("*").remove();
       d3.select("#usaannotationnote").html("");
 
+
       createScatterPlot(selectedYear);
       break;
-
     case 2:
       document.getElementById("scatterplotdiv").classList.remove("hidden");
       document.getElementById("barchartdiv").classList.add("hidden");
@@ -157,12 +160,16 @@ function initializePage() {
       document.getElementById("page2story").classList.remove("hidden");
       document.getElementById("page3story").classList.add("hidden");
 
+
       d3.select("#subsaharanannotation").selectAll("*").remove();
       d3.select("#subsaharanannotationnote").html("");
       d3.select("#mortalitygdpannotation").selectAll("*").remove();
       d3.select("#mortalitygdpannotationnote").html("");
 
-      simulateProgressScatterPlot(years[0]);
+      //document.getElementById("subsaharanannotation").style.display="None"
+
+      createScatterPlot(years[0]);
+      simulateProgressScatterPlot();
       break;
     case 3:
       document.getElementById("scatterplotdiv").classList.add("hidden");
@@ -173,7 +180,8 @@ function initializePage() {
       document.getElementById("page2story").classList.add("hidden");
       document.getElementById("page3story").classList.remove("hidden");
 
-      simulateProgressBarChart(years[0]);
+      createBarChart(years[0]);
+      simulateProgressBarChart();
       break;
   }
 }
@@ -263,6 +271,7 @@ function createScatterPlot(year) {
   .tickValues([1, 10, 100, 1000, 10000, 100000, 1000000])
   .tickFormat(x => d3.format(",")(x))
 
+
   const canvas = svg.append("g")
   .attr("id", "scatterplotcanvas")
   .attr("transform", "translate(" + scatterPlotLeftMargin + "," + scatterPlotTopMargin + ")" )
@@ -273,10 +282,12 @@ function createScatterPlot(year) {
   .attr("transform", "translate(" + scatterPlotLeftMargin + "," + scatterPlotTopMargin + ")" )
   .call(yaxis)
 
+
   svg.append("g")
   .attr("class", "xaxis")
   .attr("transform", "translate(" + scatterPlotLeftMargin + "," + (scatterPlotTopMargin + scatterPlotHeight) + ")" )
   .call(xaxis)
+
 
   // Bar chart main title ("Cause of Mortality")
   svg.append("text")
@@ -286,13 +297,14 @@ function createScatterPlot(year) {
   .text("Child mortality per country (Year " + year +")" )
   .style("text-anchor", "start");
 
+
   // X axis label
   svg.append("text")
   .attr("id", "scatterplotxaxislabel")
   .attr("transform", "translate(" + (scatterPlotLeftMargin + (scatterPlotWidth/2)) + " ," +
                        (scatterPlotTopMargin + scatterPlotHeight + 40) + ")")
   .style("text-anchor", "middle")
-  .text("GDP per Capita (constant 2010 US$)");
+  .text("GDP per Capita");
 
   svg.append("text")
   .attr("class", "tooltipreminder")
@@ -311,7 +323,8 @@ function createScatterPlot(year) {
   .attr("text-anchor", "middle")
   .text("Child Mortality");
 
-  // Create legend
+  // Create legend;
+
   svg.append("rect")
       .attr("x", scatterPlotLeftMargin + scatterPlotWidth - 100 - 15)
       .attr("y", scatterPlotTopMargin + 10 - 15)
@@ -349,6 +362,7 @@ function createScatterPlot(year) {
   }
 
 
+
   const data = scatterPlotDataset.filter(country => country.Year==year);
 
   canvas.selectAll(".scatterplotdatapoint")
@@ -384,20 +398,9 @@ function createScatterPlot(year) {
   })
 }
 
-function simulateProgressScatterPlot(year) {
-
-  selectedYear = year;
-  if ( selectedYear == years[0]){
-    // Draw for 1st year
-    createScatterPlot(selectedYear);
-    updateYearSelectorComponent(selectedYear);
-
-    // Proceed to second year
-    selectedYear = selectedYear + 1;
-
-  }
-
-  updateYearSelectorComponent(selectedYear);
+function simulateProgressScatterPlot() {
+  selectedYear = selectedYear + 1
+  updateYearSelectorComponent(selectedYear)
   createAnnotationUSA(selectedYear);
 
   var newdata = scatterPlotDataset.filter(d => d.Year==selectedYear);
@@ -422,7 +425,7 @@ function simulateProgressScatterPlot(year) {
   .on("end", function() {
     count = count - 1;
     if ( selectedPageNr != 2 ) { initializePage }
-    else if ( count == 0 && selectedYear < 2017 ) { simulateProgressScatterPlot(selectedYear + 1) };
+    else if ( count == 0 && selectedYear < 2017 ) { simulateProgressScatterPlot() };
   })
 
   // Update  chart main title ("Cause of Mortality")
@@ -431,6 +434,8 @@ function simulateProgressScatterPlot(year) {
   .attr("y", scatterPlotTopMargin / 2)
   .text("Child mortality per country (Year " + selectedYear +")" )
   .style("text-anchor", "start");
+
+
 }
 
 
@@ -459,7 +464,7 @@ function getTopTenCountries (year, causeOfDeath ) {
   )
 
   result.sort(function(a, b){
-    return a.Value > b.Value ? -1 : 1;
+    return (a.Value > b.Value) * -1;
   })
   return result;
 }
@@ -472,7 +477,9 @@ function createBarChart(year) {
   data = constructBarChartData(data);
 
   // Sort data descending on CauseOfDeath value
-  data.sort(function(a, b){return a.Value > b.Value ? -1 : 1; });
+  data.sort(function(a, b){
+    return (a.Value > b.Value) * -1;
+  })
   domainCauseOfDeath = data.map((e)=> e.CauseOfDeath)
 
   svg = d3.select("#barchartsvg");
@@ -540,6 +547,8 @@ function createBarChart(year) {
   .on("mouseout", function() {
        barChartTooltip.style("opacity", 0);
        barChartTooltip.style("z-index", 0);
+       //barChartTooltip.style("left",0);
+       //barChartTooltip.style("top",0);
     })
 
   // Bar chart main title ("Cause of Mortality")
@@ -621,19 +630,13 @@ function createBarChart(year) {
     d3.select("#totalmortalityannotationnote").html("");
 
   }
+
+
 }
 
 
-function simulateProgressBarChart(year) {
-
-  selectedYear = year;
-  if ( selectedYear == years[0]){
-    updateYearSelectorComponent(selectedYear);
-    createBarChart(selectedYear);
-
-    selectedYear = selectedYear + 1;
-  }
-
+function simulateProgressBarChart() {
+  selectedYear = selectedYear + 1
   updateYearSelectorComponent(selectedYear)
 
   d3.select("#prematurityannotation").selectAll("*").remove();
@@ -642,6 +645,8 @@ function simulateProgressBarChart(year) {
   d3.select("#diarrhoealmalariaannotationnote").html("");
   d3.select("#totalmortalityannotation").selectAll("*").remove();
   d3.select("#totalmortalityannotationnote").html("");
+
+
 
   var newdata = barChartDataset.filter(d => d.Year==selectedYear);
   newdata = constructBarChartData(newdata);
@@ -653,7 +658,7 @@ function simulateProgressBarChart(year) {
     data.push(arr[0])
   })
 
-  newdata.sort(function(a, b){ return a.Value > b.Value ? -1 : 1; });
+  newdata.sort(function(a, b){ return (a.Value > b.Value) * -1 });
   var domainCauseOfDeath = newdata.map(function (d) { return d.CauseOfDeath; });
 
   barChartYScale = d3.scaleBand()
@@ -681,7 +686,7 @@ function simulateProgressBarChart(year) {
     if ( selectedPageNr != 3 ) { initializePage }
     else if ( count == 0 ) {
       if ( selectedYear < 2017 ) {
-        simulateProgressBarChart(selectedYear + 1);
+        simulateProgressBarChart()
       } else {
         createAnnotationPrematurity();
         createAnnotationDiarrhoealMalaria();
@@ -707,37 +712,17 @@ function simulateProgressBarChart(year) {
 
 }
 
-function getScatterPlotCanvasX() {
-  return window.pageXOffset
-        + document.getElementById("scatterplotsvg").getBoundingClientRect().x
-        + scatterPlotLeftMargin;
-
-}
-
-function getScatterPlotCanvasY() {
-  return window.pageYOffset
-        + document.getElementById("scatterplotsvg").getBoundingClientRect().y
-        + scatterPlotTopMargin;
-
-}
-
-function getBarChartCanvasX() {
-  return window.pageXOffset
-        + document.getElementById("barchartsvg").getBoundingClientRect().x
-        + barChartLeftMargin;
-
-}
-
-function getBarChartCanvasY() {
-  return window.pageYOffset
-        + document.getElementById("barchartsvg").getBoundingClientRect().y
-        + barChartTopMargin;
-
-}
-
 function createAnnotationSubSaharan() {
 
+  const canvasX = window.scrollX
+            + document.getElementById("scatterplotsvg").getBoundingClientRect().x
+            + scatterPlotLeftMargin;
+  const canvasY = window.scrollY
+            + document.getElementById("scatterplotsvg").getBoundingClientRect().y
+            + scatterPlotTopMargin;
+
   canvas = d3.select("#scatterplotsvg").select("#scatterplotcanvas");
+
   var annotation = d3.select("#subsaharanannotation");
   if ( annotation.size() == 0 ){
     annotation = canvas.append("g")
@@ -781,8 +766,8 @@ function createAnnotationSubSaharan() {
   const textdx = -75;
   const textdy = 5;
 
-  const left = getScatterPlotCanvasX() + x2 + textdx;
-  const top = getScatterPlotCanvasY() + y2 + textdy;
+  const left = canvasX + x2 + textdx;
+  const top = canvasY + y2 + textdy;
 
   var note = d3.select("#subsaharanannotationnote");
   if ( note.size() == 0){
@@ -801,6 +786,14 @@ function createAnnotationSubSaharan() {
 
 
 function createAnnotationMortalityGDP() {
+  const canvasX = window.scrollX
+            + document.getElementById("scatterplotsvg").getBoundingClientRect().x
+            + scatterPlotLeftMargin;
+  const canvasY = window.scrollY
+            + document.getElementById("scatterplotsvg").getBoundingClientRect().y
+            + scatterPlotTopMargin;
+
+
 
   const linex1 = scatterPlotXScale(300)
   const liney1 = scatterPlotYScale(1000000)
@@ -854,8 +847,8 @@ function createAnnotationMortalityGDP() {
   const textdx = -100;
   const textdy = -70;
 
-  const left = getScatterPlotCanvasX() + x2 + textdx;
-  const top = getScatterPlotCanvasY() + y2 + textdy;
+  const left = canvasX + x2 + textdx;
+  const top = canvasY + y2 + textdy;
 
   var note = d3.select("#mortalitygdpannotationnote");
   if ( note.size() == 0){
@@ -871,6 +864,35 @@ function createAnnotationMortalityGDP() {
       .html(text)
 }
 
+function getScatterPlotCanvasX() {
+  return window.pageXOffset
+        + document.getElementById("scatterplotsvg").getBoundingClientRect().x
+        + scatterPlotLeftMargin;
+
+}
+
+function getScatterPlotCanvasY() {
+  return window.pageYOffset
+        + document.getElementById("scatterplotsvg").getBoundingClientRect().y
+        + scatterPlotTopMargin;
+
+}
+
+function getBarChartCanvasX() {
+  return window.pageXOffset
+        + document.getElementById("barchartsvg").getBoundingClientRect().x
+        + barChartLeftMargin;
+
+}
+
+function getBarChartCanvasY() {
+  return window.pageYOffset
+        + document.getElementById("barchartsvg").getBoundingClientRect().y
+        + barChartTopMargin;
+
+}
+
+
 
 function createAnnotationMortalityGDPTrend() {
 
@@ -878,6 +900,7 @@ function createAnnotationMortalityGDPTrend() {
   const liney1 = scatterPlotYScale(1000000)
   const linex2 = scatterPlotXScale(20000)
   const liney2 = scatterPlotYScale(200000)
+
 
   canvas = d3.select("#scatterplotsvg").select("#scatterplotcanvas");
 
@@ -887,6 +910,9 @@ function createAnnotationMortalityGDPTrend() {
                 .attr("id", "mortalitygdptrendannotation");
   }
   annotation.selectAll("*").remove();
+  //<polyline fill="none" stroke="black"
+        //points="20,100 40,60 70,80 100,20" marker-end="url(#triangle)"/>
+
 
   annotation.append("defs")
   .append("marker")
@@ -904,6 +930,7 @@ function createAnnotationMortalityGDPTrend() {
             .attr("id", "mortalitygdptrendannotationline")
             .attr("points", linex1 +  "," + liney1 + " " + linex2 + "," + liney2 )
             .attr("marker-end", "url(#arrow)")
+
 
   text = "Over a period of 2 decades most countries have progressed "
        + "with increasing GDP per capita and decreasing child mortality."
@@ -929,7 +956,6 @@ function createAnnotationMortalityGDPTrend() {
       .style("width", "220px")
       .html(text)
 }
-
 
 function createAnnotationUSA(year) {
   canvas = d3.select("#scatterplotsvg").select("#scatterplotcanvas");
