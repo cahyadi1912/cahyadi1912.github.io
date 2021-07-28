@@ -7,7 +7,7 @@ var selectedYear = years[0];
 var scatterPlotDataset;
 
 const rightPanelRect = document.getElementById("rightpanel").getBoundingClientRect();
-document.getElementById("scatterplotsvg").style.width = rightPanelRect.width;
+d3.select("#scatterplotsvg").style("width", rightPanelRect.width + "px")
 
 const scatterPlotSvgWidth = rightPanelRect.width;
 const scatterPlotSvgHeight = rightPanelRect.height;
@@ -48,7 +48,7 @@ var barChartDataset;
 var allCauseOfDeaths;
 var topTenCountriesDataset;
 
-document.getElementById("barchartsvg").style.width = rightPanelRect.width;
+d3.select("#barchartsvg").style("width", rightPanelRect.width + "px")
 const barChartSvgWidth=rightPanelRect.width;
 const barChartSvgHeight=rightPanelRect.height;
 
