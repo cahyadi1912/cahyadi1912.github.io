@@ -32,7 +32,7 @@ table, th, td {
 #rightpanel{
   float: left;
   display: inline-block;
-  width: 65%;
+  width: 70%;
 }
 
 #pageselectordiv{
@@ -94,12 +94,12 @@ table, th, td {
 
 
 #scatterplotsvg{
-  width: 1200px;
+  /*width: 1200px;*/
   height: 800px;
 }
 
 #barchartsvg{
-  width: 1300px;
+  /*width: 1300px;*/
   height: 800px;
 }
 

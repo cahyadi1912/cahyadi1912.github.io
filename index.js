@@ -5,8 +5,12 @@ var selectedYear = years[0];
 
 // Scatterplot parameters
 var scatterPlotDataset;
-const scatterPlotSvgWidth = 1200;
-const scatterPlotSvgHeight = 800;
+
+const rightPanelRect = document.getElementById("rightpanel").getBoundingClientRect();
+document.getElementById("scatterplotsvg").style.width = rightPanelRect.width;
+
+const scatterPlotSvgWidth = rightPanelRect.width;
+const scatterPlotSvgHeight = rightPanelRect.height;
 const scatterPlotLeftMargin = 100;
 const scatterPlotRightMargin = 75;
 const scatterPlotTopMargin = 100;
@@ -43,10 +47,12 @@ barChartTooltip.select("table").append("tbody");
 var barChartDataset;
 var allCauseOfDeaths;
 var topTenCountriesDataset;
-const barChartSvgWidth=1300; // this should be copied to css
-const barChartSvgHeight=800 // this should be copied to css
 
-const barChartLeftMargin = 350;
+document.getElementById("barchartsvg").style.width = rightPanelRect.width;
+const barChartSvgWidth=rightPanelRect.width;
+const barChartSvgHeight=rightPanelRect.height;
+
+const barChartLeftMargin = 300;
 const barChartRightMargin = 80;
 const barChartTopMargin = 80;
 const barChartBottomMargin = 80;
@@ -313,7 +319,7 @@ function createScatterPlot(year) {
 
   // Create legend
   svg.append("rect")
-      .attr("x", scatterPlotLeftMargin + scatterPlotWidth - 100 - 15)
+      .attr("x", scatterPlotLeftMargin + scatterPlotWidth - 190 + 50)
       .attr("y", scatterPlotTopMargin + 10 - 15)
       .attr("rx", 5)
       .attr("ry", 5)
@@ -329,16 +335,18 @@ function createScatterPlot(year) {
   const linespace = 20;
   var xpos, ypos;
   for ( var i = 0; i < regions.length; i++ ){
-    xpos = scatterPlotLeftMargin + scatterPlotWidth - 100;
+    xpos = scatterPlotLeftMargin + scatterPlotWidth - 120;
     ypos = scatterPlotTopMargin + 10 + i*linespace;
     svg.append("circle").attr("cx", xpos).attr("cy",ypos).attr("r", 6).attr("class", getRegionClass(regions[i])).style("stroke", "black");
     svg.append("text").attr("x", xpos + 15).attr("y", ypos).text(regions[i]).attr("class", "regiontextlegend").attr("dy", "0.25rem").style("text-anchor","start");
   }
 
 
+  const data = scatterPlotDataset.filter(country => country.Year==year);
+
   if ( year == 2000 && selectedPageNr == 1 )
   {
-    createAnnotationSubSaharan();
+    createAnnotationSubSaharan(data);
     createAnnotationMortalityGDP();
   }
 
@@ -347,9 +355,6 @@ function createScatterPlot(year) {
     createAnnotationMortalityGDPTrend();
     createAnnotationUSA(year);
   }
-
-
-  const data = scatterPlotDataset.filter(country => country.Year==year);
 
   canvas.selectAll(".scatterplotdatapoint")
   .data(data)
@@ -735,7 +740,7 @@ function getBarChartCanvasY() {
 
 }
 
-function createAnnotationSubSaharan() {
+function createAnnotationSubSaharan(data) {
 
   canvas = d3.select("#scatterplotsvg").select("#scatterplotcanvas");
   var annotation = d3.select("#subsaharanannotation");
@@ -748,10 +753,17 @@ function createAnnotationSubSaharan() {
 
   // SubSaharanAfrica annotation
   //rect
-  const rectx1=80;
-  const recty1=80;
-  const rectwidth=190;
-  const rectheight=140;
+  const topLeftCountry = data.filter(d => d.CountryName == "Ethiopia")[0];
+  const topRightCountry = data.filter(d => d.CountryName == "Pakistan")[0];
+  const bottomCountry = data.filter(d => d.CountryName == "Liberia")[0];
+
+  console.log(topLeftCountry.CountryName)
+
+
+  const rectx1= scatterPlotXScale(topLeftCountry.GDPPerCapita) - 6; // 80;
+  const recty1= scatterPlotYScale(topRightCountry.Value) - 7//80;
+  const rectwidth= scatterPlotXScale(topRightCountry.GDPPerCapita) - rectx1 //190;
+  const rectheight= scatterPlotYScale(bottomCountry.Value) + 8 - recty1 //140;
   annotation.append("rect")
             .attr("class", "annotationarea")
             .attr("x", rectx1)
@@ -908,12 +920,9 @@ function createAnnotationMortalityGDPTrend() {
   text = "Over a period of 2 decades most countries have progressed "
        + "with increasing GDP per capita and decreasing child mortality."
 
-  const dx = -30;
-  const dy = -100;
-  //const textx = getScatterPlotCanvasX() + linex2 + dx;
-  //const texty = getScatterPlotCanvasY() + liney2 + dy;
-  const textx = getScatterPlotCanvasX() + scatterPlotXScale(15000);
-  const texty = getScatterPlotCanvasY() + scatterPlotYScale(1700000) - 20;
+
+  const textx = getScatterPlotCanvasX() + scatterPlotXScale(9000);
+  const texty = getScatterPlotCanvasY() + scatterPlotYScale(1700000) - 55;
 
 
   var note = d3.select("#mortalitygdptrendannotationnote");
@@ -926,7 +935,7 @@ function createAnnotationMortalityGDPTrend() {
 
   note.style("left", textx + "px")
       .style("top", texty + "px")
-      .style("width", "220px")
+      .style("width", "180px")
       .html(text)
 }
 
@@ -985,7 +994,7 @@ function createAnnotationUSA(year) {
 
   note.style("left", left + "px")
       .style("top", top + "px")
-      .style("width", "200px")
+      .style("width", "150px")
       .html(text)
 
 }
@@ -1021,7 +1030,7 @@ function createAnnotationPrematurity() {
   const x1 = circlex;
   const y1 = circley;
   const x2 = x1 + 50
-  const y2 = y1 + 50;
+  const y2 = y1 + 30;
 
   annotation.append("line")
             .attr("class", "annotationconnector")
@@ -1033,7 +1042,7 @@ function createAnnotationPrematurity() {
   text = "Since 2011 prematurity has become the most leading cause of child mortality worldwide."
 
   const textdx = 20;
-  const textdy = 0;
+  const textdy = -20;
 
   const left = getBarChartCanvasX()+ x2 + textdx;
   const top = getBarChartCanvasY() + y2 + textdy;
@@ -1071,7 +1080,6 @@ function createAnnotationDiarrhoealMalaria() {
   annotation.selectAll("*").remove();
 
 
-
   // create annotation circle area and scaleLine
   // Annotation circle and line for Diarrhoeal diseases"
   const circlex = barChartXScale(datapoint1.Value);
@@ -1087,8 +1095,8 @@ function createAnnotationDiarrhoealMalaria() {
   //lineconnector
   const x1 = circlex;
   const y1 = circley;
-  const x2 = x1 + 110;
-  const y2 = y1 + 80;
+  const x2 = x1 + 140;
+  const y2 = y1;
 
   annotation.append("line")
             .attr("class", "annotationconnector")
@@ -1113,7 +1121,7 @@ function createAnnotationDiarrhoealMalaria() {
   const x1_2 = circlex_2;
   const y1_2 = circley_2;
   const x2_2 = x1_2 + 200
-  const y2_2 = y1_2;
+  const y2_2 = y1_2 - 100;
 
   annotation.append("line")
             .attr("class", "annotationconnector")
@@ -1176,10 +1184,10 @@ function createAnnotationTotalMortality() {
             .attr("height",rect_y2-rect_y1)
 
   //lineconnector
-  const x1 = rect_x1;
-  const y1 = rect_y1 + (rect_y2 - rect_y1)/2;
-  const x2 = x1 - 50;
-  const y2 = y1;
+  const x1 = ( rect_x1 + rect_x2 ) / 2;
+  const y1 = rect_y1;
+  const x2 = x1
+  const y2 = y1 - 50;
 
   annotation.append("line")
             .attr("class", "annotationconnector")
@@ -1191,8 +1199,8 @@ function createAnnotationTotalMortality() {
   text = "The total number of child mortality in the past 2 decades has reduced "
        + "by 45.8%";
 
-  const textdx = -200;
-  const textdy = -10;
+  const textdx = - (rect_x2 - rect_x1 ) *0.75 / 2 + 20;
+  const textdy = -60;
 
   const left = getBarChartCanvasX()+ x2 + textdx;
   const top = getBarChartCanvasY() + y2 + textdy;
