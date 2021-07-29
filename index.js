@@ -886,17 +886,10 @@ function createAnnotationMortalityGDP() {
 
 function createAnnotationMortalityGDPTrend() {
 
-  //const linex1 = scatterPlotXScale(7000)
-  //const liney1 = scatterPlotYScale(500000)
-  //const linex2 = scatterPlotXScale(20000)
-  //const liney2 = scatterPlotYScale(120000)
-
-
   const linex1 = scatterPlotXScale(400)
   const liney1 = scatterPlotYScale(500)
   const linex2 = scatterPlotXScale(1000)
   const liney2 = scatterPlotYScale(70)
-
 
   canvas = d3.select("#scatterplotsvg").select("#scatterplotcanvas");
 
@@ -926,11 +919,6 @@ function createAnnotationMortalityGDPTrend() {
 
   text = "Over a period of 2 decades most countries have progressed "
        + "with increasing GDP per capita and decreasing child mortality."
-
-
-  //const textx = getScatterPlotCanvasX() + scatterPlotXScale(9000);
-  //const texty = getScatterPlotCanvasY() + scatterPlotYScale(1700000) - 55;
-
 
   const textx = getScatterPlotCanvasX() + linex1 - 100;
   const texty = getScatterPlotCanvasY() + liney1 + 75;
