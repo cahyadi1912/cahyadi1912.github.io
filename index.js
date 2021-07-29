@@ -7,12 +7,12 @@ var selectedYear = years[0];
 var scatterPlotDataset;
 
 const rightPanelRect = document.getElementById("rightpanel").getBoundingClientRect();
-d3.select("#scatterplotsvg").style("width", rightPanelRect.width + "px")
+d3.select("#scatterplotsvg").style("width", rightPanelRect.width  + "px")
 
 const scatterPlotSvgWidth = rightPanelRect.width;
 const scatterPlotSvgHeight = rightPanelRect.height;
 const scatterPlotLeftMargin = 100;
-const scatterPlotRightMargin = 75;
+const scatterPlotRightMargin = 80;
 const scatterPlotTopMargin = 100;
 const scatterPlotBottomMargin = 75;
 const scatterPlotHeight = scatterPlotSvgHeight - scatterPlotTopMargin - scatterPlotBottomMargin;
@@ -1135,10 +1135,10 @@ function createAnnotationDiarrhoealMalaria() {
        + "in the causes of child mortality list. "
 
   const textdx = 20;
-  const textdy = -40;
+  const textdy = -10;
 
-  const left = getBarChartCanvasX()+ x2_2 + textdx;
-  const top = getBarChartCanvasY() + y2_2 + textdy;
+  const left = getBarChartCanvasX()+ x2  + textdx;
+  const top = getBarChartCanvasY() + y2 + textdy;
 
   var note = d3.select("#diarrhoealmalariaannotationnote");
   if ( note.size() == 0){
