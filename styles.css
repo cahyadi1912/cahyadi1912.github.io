@@ -95,12 +95,12 @@ table, th, td {
 
 #scatterplotsvg{
   /*width: 1200px;*/
-  height: 800px;
+  height: 700px;
 }
 
 #barchartsvg{
   /*width: 1300px;*/
-  height: 800px;
+  height: 700px;
 }
 
 .scatterplotdatapoint{

@@ -886,10 +886,17 @@ function createAnnotationMortalityGDP() {
 
 function createAnnotationMortalityGDPTrend() {
 
-  const linex1 = scatterPlotXScale(7000)
-  const liney1 = scatterPlotYScale(1000000)
-  const linex2 = scatterPlotXScale(20000)
-  const liney2 = scatterPlotYScale(200000)
+  //const linex1 = scatterPlotXScale(7000)
+  //const liney1 = scatterPlotYScale(500000)
+  //const linex2 = scatterPlotXScale(20000)
+  //const liney2 = scatterPlotYScale(120000)
+
+
+  const linex1 = scatterPlotXScale(400)
+  const liney1 = scatterPlotYScale(500)
+  const linex2 = scatterPlotXScale(1000)
+  const liney2 = scatterPlotYScale(70)
+
 
   canvas = d3.select("#scatterplotsvg").select("#scatterplotcanvas");
 
@@ -921,8 +928,12 @@ function createAnnotationMortalityGDPTrend() {
        + "with increasing GDP per capita and decreasing child mortality."
 
 
-  const textx = getScatterPlotCanvasX() + scatterPlotXScale(9000);
-  const texty = getScatterPlotCanvasY() + scatterPlotYScale(1700000) - 55;
+  //const textx = getScatterPlotCanvasX() + scatterPlotXScale(9000);
+  //const texty = getScatterPlotCanvasY() + scatterPlotYScale(1700000) - 55;
+
+
+  const textx = getScatterPlotCanvasX() + linex1 - 100;
+  const texty = getScatterPlotCanvasY() + liney1 + 75;
 
 
   var note = d3.select("#mortalitygdptrendannotationnote");
@@ -1095,8 +1106,8 @@ function createAnnotationDiarrhoealMalaria() {
   //lineconnector
   const x1 = circlex;
   const y1 = circley;
-  const x2 = x1 + 140;
-  const y2 = y1;
+  const x2 = x1 + 130;
+  const y2 = y1 - 50;
 
   annotation.append("line")
             .attr("class", "annotationconnector")
@@ -1120,8 +1131,8 @@ function createAnnotationDiarrhoealMalaria() {
   //lineconnector
   const x1_2 = circlex_2;
   const y1_2 = circley_2;
-  const x2_2 = x1_2 + 200
-  const y2_2 = y1_2 - 100;
+  const x2_2 = x1_2 + 190
+  const y2_2 = y1_2 - 140;
 
   annotation.append("line")
             .attr("class", "annotationconnector")
@@ -1187,7 +1198,7 @@ function createAnnotationTotalMortality() {
   const x1 = ( rect_x1 + rect_x2 ) / 2;
   const y1 = rect_y1;
   const x2 = x1
-  const y2 = y1 - 50;
+  const y2 = y1 - 30;
 
   annotation.append("line")
             .attr("class", "annotationconnector")
