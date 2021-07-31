@@ -6,14 +6,14 @@ var selectedYear = years[0];
 // Scatterplot parameters
 var scatterPlotDataset;
 
-const rightPanelRect = document.getElementById("rightpanel").getBoundingClientRect();
-
 const svgMinWidth = 880;
 const svgMaxWidth = 1320;
-const scatterPlotSvgWidth = Math.min( Math.max(rightPanelRect.width -10, svgMinWidth), svgMaxWidth );
-
 const svgMinHeight = 550;
 const svgMaxHeight = 860;
+
+const rightPanelRect = document.getElementById("rightpanel").getBoundingClientRect();
+
+const scatterPlotSvgWidth = Math.min( Math.max(rightPanelRect.width -10, svgMinWidth), svgMaxWidth );
 const scatterPlotSvgHeight = Math.min( Math.max(window.innerHeight - rightPanelRect.y - 10, svgMinHeight), svgMaxHeight );
 
 d3.select("#scatterplotsvg").style("width", scatterPlotSvgWidth  + "px")
@@ -51,8 +51,8 @@ var barChartDataset;
 var allCauseOfDeaths;
 var topTenCountriesDataset;
 
-const barChartSvgWidth=  rightPanelRect.width -10; //Math.min( rightPanelRect.width, 1200)
-const barChartSvgHeight= window.innerHeight - rightPanelRect.y - 40;
+const barChartSvgWidth = Math.min( Math.max(rightPanelRect.width -10, svgMinWidth), svgMaxWidth );
+const barChartSvgHeight = Math.min( Math.max(window.innerHeight - rightPanelRect.y - 40, svgMinHeight), svgMaxHeight );
 
 d3.select("#barchartsvg").style("width", barChartSvgWidth + "px")
 d3.select("#barchartsvg").style("height", barChartSvgHeight + "px")
@@ -549,7 +549,7 @@ function createBarChart(year) {
 
     barChartTooltip.style("opacity", 1)
                         .style("left", (d3.event.pageX + 10)+"px")
-                        .style("top", (d3.event.pageY - 100)+"px")
+                        .style("top", (d3.event.pageY - 110)+"px")
                         .style("z-index", 5)
 
     })
