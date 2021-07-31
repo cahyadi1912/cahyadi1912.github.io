@@ -155,6 +155,9 @@ function initializePage() {
       d3.select("#mortalitygdptrendannotationnote").html("");
       d3.select("#usaannotation").selectAll("*").remove();
       d3.select("#usaannotationnote").html("");
+      d3.select("#chinaannotation").selectAll("*").remove();
+      d3.select("#chinaannotationnote").html("");
+
 
       createScatterPlot(selectedYear);
       break;
@@ -358,6 +361,8 @@ function createScatterPlot(year) {
   {
     createAnnotationMortalityGDPTrend();
     createAnnotationUSA(year);
+    createAnnotationChina(year);
+
   }
 
   // Drawing scatterplot data points
@@ -410,7 +415,7 @@ function simulateProgressScatterPlot(year) {
   }
 
   updateYearSelectorComponent(selectedYear);
-  createAnnotationUSA(selectedYear);
+
 
   var newdata = scatterPlotDataset.filter(d => d.Year==selectedYear);
 
@@ -438,6 +443,10 @@ function simulateProgressScatterPlot(year) {
     if ( selectedPageNr != 2 ) { initializePage }
     else if ( count == 0 && selectedYear < 2017 ) { simulateProgressScatterPlot(selectedYear + 1) };
   })
+
+  createAnnotationUSA(selectedYear);
+  createAnnotationChina(selectedYear);
+
 
   // Update  chart main title ("Cause of Mortality")
   svg.select("#scatterplottitle")
@@ -1002,6 +1011,66 @@ function createAnnotationUSA(year) {
       .html(text)
 
 }
+
+function createAnnotationChina(year) {
+  canvas = d3.select("#scatterplotsvg").select("#scatterplotcanvas");
+  const chinadatapoint = scatterPlotDataset.filter(e => e.CountryCode == "CHN" && e.Year == year)[0];
+
+  var annotation = d3.select("#chinaannotation");
+  if ( annotation.size() == 0 ){
+    annotation = canvas.append("g")
+                .attr("id", "chinaannotation");
+  }
+  annotation.selectAll("*").remove();
+
+  // create annotation circle area and scaleLine
+  const circlex = scatterPlotXScale(chinadatapoint.GDPPerCapita);
+  const circley = scatterPlotYScale(chinadatapoint.Value);
+  const radius = 15;
+
+  annotation.append("circle")
+            .attr("class", "annotationarea")
+            .attr("cx", circlex)
+            .attr("cy", circley)
+            .attr("r", radius)
+
+  //lineconnector
+  const x1 = circlex;
+  const y1 = circley;
+  const x2 = x1 + 50;
+  const y2 = y1 - 30;
+
+  annotation.append("line")
+            .attr("class", "annotationconnector")
+            .attr("x1", x1)
+            .attr("y1", y1)
+            .attr("x2", x2)
+            .attr("y2", y2)
+
+  text = "China has a steep progress in reducing "
+      + "child mortality and increasing GDP per capita "
+
+  const textdx = 20;
+  const textdy = -30;
+
+  const left = getScatterPlotCanvasX()+ x2 + textdx;
+  const top = getScatterPlotCanvasY() + y2 + textdy;
+
+  var note = d3.select("#chinaannotationnote");
+  if ( note.size() == 0){
+    note = d3.select("#scatterplotdiv")
+            .append("div")
+            .attr("class", "annotationnote")
+            .attr("id", "chinaannotationnote")
+  }
+
+  note.style("left", left + "px")
+      .style("top", top + "px")
+      .style("width", "150px")
+      .html(text)
+
+}
+
 
 
 function createAnnotationPrematurity() {
