@@ -13,7 +13,7 @@ const scatterPlotSvgHeight = window.innerHeight - rightPanelRect.y - 10;
 d3.select("#scatterplotsvg").style("width", scatterPlotSvgWidth  + "px")
 d3.select("#scatterplotsvg").style("height", scatterPlotSvgHeight  + "px")
 
-const scatterPlotLeftMargin = 80;
+const scatterPlotLeftMargin = 70;
 const scatterPlotRightMargin = 150;
 const scatterPlotTopMargin = 75;
 const scatterPlotBottomMargin = 75;
