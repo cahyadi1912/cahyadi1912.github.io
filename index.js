@@ -932,7 +932,7 @@ function createAnnotationMortalityGDPTrend() {
             .attr("marker-end", "url(#arrow)")
 
   text = "Over a period of 2 decades most countries have progressed "
-       + "with increasing GDP per capita and decreasing child mortality."
+       + "with increasing GDP per capita and decreasing child mortality"
 
   const textx = getScatterPlotCanvasX() + linex2 - 180;
   const texty = getScatterPlotCanvasY() + liney2;
