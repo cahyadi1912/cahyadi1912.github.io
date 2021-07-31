@@ -13,7 +13,7 @@ const svgMaxWidth = 1320;
 const scatterPlotSvgWidth = Math.min( Math.max(rightPanelRect.width -10, svgMinWidth), svgMaxWidth );
 
 const svgMinHeight = 550;
-const svgMaxHeight = 8600;
+const svgMaxHeight = 860;
 const scatterPlotSvgHeight = Math.min( Math.max(window.innerHeight - rightPanelRect.y - 10, svgMinHeight), svgMaxHeight );
 
 d3.select("#scatterplotsvg").style("width", scatterPlotSvgWidth  + "px")
