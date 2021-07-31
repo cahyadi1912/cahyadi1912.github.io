@@ -7,14 +7,18 @@ var selectedYear = years[0];
 var scatterPlotDataset;
 
 const rightPanelRect = document.getElementById("rightpanel").getBoundingClientRect();
-const scatterPlotSvgWidth = rightPanelRect.width -10;//Math.min( rightPanelRect.width, 1200);
+var scatterPlotSvgWidth = rightPanelRect.width -10
+
+;//Math.min( rightPanelRect.width, 1200);
+
 const scatterPlotSvgHeight = window.innerHeight - rightPanelRect.y - 10;
 
+930, 550
 d3.select("#scatterplotsvg").style("width", scatterPlotSvgWidth  + "px")
 d3.select("#scatterplotsvg").style("height", scatterPlotSvgHeight  + "px")
 
 const scatterPlotLeftMargin = 70;
-const scatterPlotRightMargin = 160;
+const scatterPlotRightMargin = 165;
 const scatterPlotTopMargin = 75;
 const scatterPlotBottomMargin = 75;
 const scatterPlotHeight = scatterPlotSvgHeight - scatterPlotTopMargin - scatterPlotBottomMargin;
