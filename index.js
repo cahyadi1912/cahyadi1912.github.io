@@ -802,7 +802,7 @@ function createAnnotationSubSaharan(data) {
             .attr("x2", x2)
             .attr("y2", y2)
 
-  text = "Sub Saharan African countries (purple) have the most child mortality"
+  text = "Sub-Saharan African countries (purple) have the most child mortality"
 
   const textdx = -75;
   const textdy = 5;
