@@ -13,7 +13,7 @@ const scatterPlotSvgHeight = window.innerHeight - rightPanelRect.y - 10;
 d3.select("#scatterplotsvg").style("width", scatterPlotSvgWidth  + "px")
 d3.select("#scatterplotsvg").style("height", scatterPlotSvgHeight  + "px")
 
-const scatterPlotLeftMargin = 100;
+const scatterPlotLeftMargin = 80;
 const scatterPlotRightMargin = 150;
 const scatterPlotTopMargin = 75;
 const scatterPlotBottomMargin = 75;
@@ -309,8 +309,8 @@ function createScatterPlot(year) {
   // Y axis label
   svg.append("text")
   .attr("id","scatterplotyaxislabel")
-  .attr("transform", "translate(" + scatterPlotLeftMargin/2  + " ,"
-                    + (scatterPlotTopMargin + scatterPlotHeight /2 ) + ")"
+  .attr("transform", "translate(" + (scatterPlotLeftMargin/2 - 15) + " ,"
+                    + (scatterPlotTopMargin + scatterPlotHeight /2  ) + ")"
                     + "rotate(-90)"
       )
   .attr("text-anchor", "middle")
@@ -1022,7 +1022,7 @@ function createAnnotationPrematurity() {
   const x1 = circlex;
   const y1 = circley;
   const x2 = barChartXScale(1100000);
-  const y2 = y1 + 30;
+  const y2 = y1 + 20;
 
   annotation.append("line")
             .attr("class", "annotationconnector")
@@ -1088,7 +1088,7 @@ function createAnnotationDiarrhoealMalaria() {
   const x1 = circlex;
   const y1 = circley;
   const x2 = barChartXScale(850000);
-  const y2 = y1 - 50;
+  const y2 = y1 - 30;
 
   annotation.append("line")
             .attr("class", "annotationconnector")
