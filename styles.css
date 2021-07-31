@@ -21,6 +21,9 @@ table, th, td {
   padding: 0.2rem;
 }
 
+tr{
+  line-height: 0.5;
+}
 
 #leftpanel{
   float: left;
@@ -54,7 +57,6 @@ table, th, td {
   padding: 10px 20px;
 }
 
-
 #yearselectordiv{
   margin: 15px;
   background-color: #BBBFCA;
@@ -74,7 +76,6 @@ table, th, td {
   color: white;
 }
 
-
 #yearselector{
   width: 60%;
   margin:5%;
@@ -91,7 +92,6 @@ table, th, td {
 .hidden{
   display: None;
 }
-
 
 .scatterplotdatapoint{
   stroke:black;
@@ -129,7 +129,7 @@ table, th, td {
   fill: purple;
 }
 
-#scatterplottooltip {
+#scatterplottooltip, #barcharttooltip {
   font-size: 0.75rem;
   opacity: 0;
   position: absolute;
@@ -137,17 +137,7 @@ table, th, td {
   display:inline-block;
   background-color: #F5F7B2;
   padding: 5px;
-}
-
-#barcharttooltip{
-  font-size: 0.75rem;
-  opacity: 0;
-  position: absolute;
-  text-align: left;
-  display:inline-block;
-  background-color: #F5F7B2;
-  /*border: solid black 1px;*/
-  padding: 5px;
+  pointer-events:none;
 }
 
 #barcharttitle, #scatterplottitle{
@@ -206,10 +196,8 @@ table, th, td {
   fill: gray;
 }
 
-
 .regiontextlegend{
   font-size: 0.8rem;
-
 }
 
 #barcharttotalmortality{
@@ -220,8 +208,4 @@ table, th, td {
 #labelBarChartToolTip{
   font-weight: bold;
   line-height: 1.5;
-}
-
-tr{
-  line-height: 0.5;
 }

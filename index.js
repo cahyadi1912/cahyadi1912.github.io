@@ -5,7 +5,6 @@ var selectedYear = years[0];
 
 // Scatterplot parameters
 var scatterPlotDataset;
-
 const svgMinWidth = 880;
 const svgMaxWidth = 1320;
 const svgMinHeight = 550;
@@ -35,16 +34,6 @@ scatterPlotTooltip.append("label").attr("id", "scatterPlotTooltiplbl1")
 scatterPlotTooltip.append("label").attr("id", "scatterPlotTooltiplbl2")
                   .style("display", "inline-block")
 
-var barChartTooltip = d3.select("#barcharttooltip")
-
-// Prepare barchart tooltip
-barChartTooltip.append("label")
-              .attr("id", "labelBarChartToolTip")
-
-var tablerow = barChartTooltip.append("table").append("thead").append("tr");
-tablerow.append("th").html("Country");
-tablerow.append("th").html("Mortality");
-barChartTooltip.select("table").append("tbody");
 
 // Barchart parameters
 var barChartDataset;
@@ -66,6 +55,17 @@ const barChartWidth = barChartSvgWidth - barChartLeftMargin - barChartRightMargi
 
 var barChartYScale;
 var varChartXScale;
+
+// Prepare barchart tooltip
+var barChartTooltip = d3.select("#barcharttooltip")
+barChartTooltip.append("label")
+              .attr("id", "labelBarChartToolTip")
+
+var tablerow = barChartTooltip.append("table").append("thead").append("tr");
+tablerow.append("th").html("Country");
+tablerow.append("th").html("Mortality");
+barChartTooltip.select("table").append("tbody");
+
 
 // Logic around pressing page nr
 document.querySelectorAll(".pageselectorbutton").forEach(
@@ -289,7 +289,7 @@ function createScatterPlot(year) {
   .attr("transform", "translate(" + scatterPlotLeftMargin + "," + (scatterPlotTopMargin + scatterPlotHeight) + ")" )
   .call(xaxis)
 
-  // Bar chart main title ("Cause of Mortality")
+  // Scatterplot  main title ("Child mortality per country")
   svg.append("text")
   .attr("id", "scatterplottitle")
   .attr("x", scatterPlotLeftMargin)
@@ -348,7 +348,6 @@ function createScatterPlot(year) {
 
 
   const data = scatterPlotDataset.filter(country => country.Year==year);
-
   if ( year == 2000 && selectedPageNr == 1 )
   {
     createAnnotationSubSaharan(data);
@@ -361,6 +360,7 @@ function createScatterPlot(year) {
     createAnnotationUSA(year);
   }
 
+  // Drawing scatterplot data points
   canvas.selectAll(".scatterplotdatapoint")
   .data(data)
   .enter()
@@ -383,6 +383,7 @@ function createScatterPlot(year) {
     scatterPlotTooltip.style("opacity", 1)
                       .style("left", (d3.event.pageX)+"px")
                       .style("top", (d3.event.pageY)+"px")
+                      .style("z-index", 5)
 
   })
   .on("mouseout", function() {
@@ -393,6 +394,7 @@ function createScatterPlot(year) {
      scatterPlotTooltip.style("top",0);
   })
 }
+
 
 function simulateProgressScatterPlot(year) {
 
@@ -419,6 +421,8 @@ function simulateProgressScatterPlot(year) {
     data.push(arr[0])
   })
 
+
+  // D3 transition
   var count = data.length;
   d3.select("#scatterplotsvg").select("#scatterplotcanvas").selectAll(".scatterplotdatapoint")
   .data(data)
@@ -614,6 +618,7 @@ function createBarChart(year) {
       .text (d3.format(",.0f")(totalmortality))
       .style("text-anchor", "end")
 
+  // Create annotations
   if ( year == 2017 ) {
     createAnnotationPrematurity();
     createAnnotationDiarrhoealMalaria();
@@ -674,6 +679,7 @@ function simulateProgressBarChart(year) {
   // Update Bar chart main title ("Cause of Mortality")
   d3.select("#barcharttitle").text("Cause of child mortality (Year " + year + ")" );
 
+  // D3 transition
   var count = data.length;
   d3.select("#barchartsvg").select("#barchartcanvas").selectAll(".barchartdatapoint")
   .data(data)
