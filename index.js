@@ -14,7 +14,7 @@ d3.select("#scatterplotsvg").style("width", scatterPlotSvgWidth  + "px")
 d3.select("#scatterplotsvg").style("height", scatterPlotSvgHeight  + "px")
 
 const scatterPlotLeftMargin = 70;
-const scatterPlotRightMargin = 150;
+const scatterPlotRightMargin = 160;
 const scatterPlotTopMargin = 75;
 const scatterPlotBottomMargin = 75;
 const scatterPlotHeight = scatterPlotSvgHeight - scatterPlotTopMargin - scatterPlotBottomMargin;
