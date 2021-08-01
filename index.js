@@ -327,7 +327,7 @@ function createScatterPlot(year) {
 
   // Create legend
   svg.append("rect")
-      .attr("x", scatterPlotLeftMargin + scatterPlotWidth - 190 + 100)
+      .attr("x", scatterPlotLeftMargin + scatterPlotWidth - 190 + 110)
       .attr("y", scatterPlotTopMargin - 20)
       .attr("rx", 5)
       .attr("ry", 5)
@@ -343,7 +343,7 @@ function createScatterPlot(year) {
   const linespace = 20;
   var xpos, ypos;
   for ( var i = 0; i < regions.length; i++ ){
-    xpos = scatterPlotLeftMargin + scatterPlotWidth - 70;
+    xpos = scatterPlotLeftMargin + scatterPlotWidth - 60;
     ypos = scatterPlotTopMargin - 5 +  i*linespace;
     svg.append("circle").attr("cx", xpos).attr("cy",ypos).attr("r", 6).attr("class", getRegionClass(regions[i])).style("stroke", "black");
     svg.append("text").attr("x", xpos + 15).attr("y", ypos).text(regions[i]).attr("class", "regiontextlegend").attr("dy", "0.25rem").style("text-anchor","start");
@@ -865,7 +865,7 @@ function createAnnotationMortalityGDP() {
   const x1 = circlex;
   const y1 = circley;
   const x2 = x1;
-  const y2 = scatterPlotYScale(500000);
+  const y2 = scatterPlotYScale(300000);
 
   annotation.append("line")
             .attr("class", "annotationconnector")
@@ -877,8 +877,8 @@ function createAnnotationMortalityGDP() {
   text = "A relationship between GDP per capita and child mortality: "
        + "countries with higher GDP per capita tend so have lower child mortality"
 
-  const textdx = -100;
-  const textdy = -70;
+  const textdx = -105;
+  const textdy = -75;
 
   const left = getScatterPlotCanvasX() + x2 + textdx;
   const top = getScatterPlotCanvasY() + y2 + textdy;
@@ -893,7 +893,7 @@ function createAnnotationMortalityGDP() {
 
   note.style("left", left + "px")
       .style("top", top + "px")
-      .style("width", "200px")
+      .style("width", "220px")
       .html(text)
 }
 
@@ -991,8 +991,8 @@ function createAnnotationUSA(year) {
   text = "US has relatively higher mortality among higher "
         +"income countries due to its large population size"
 
-  const textdx = 20;
-  const textdy = -20;
+  const textdx = 10;
+  const textdy = -35;
 
   const left = getScatterPlotCanvasX()+ x2 + textdx;
   const top = getScatterPlotCanvasY() + y2 + textdy;
@@ -1007,7 +1007,7 @@ function createAnnotationUSA(year) {
 
   note.style("left", left + "px")
       .style("top", top + "px")
-      .style("width", "150px")
+      .style("width", "190px")
       .html(text)
 
 }
@@ -1050,8 +1050,8 @@ function createAnnotationChina(year) {
   text = "China has a steep progress in reducing "
       + "child mortality and increasing GDP per capita "
 
-  const textdx = 20;
-  const textdy = -30;
+  const textdx = 10;
+  const textdy = -35;
 
   const left = getScatterPlotCanvasX()+ x2 + textdx;
   const top = getScatterPlotCanvasY() + y2 + textdy;
@@ -1102,7 +1102,7 @@ function createAnnotationPrematurity() {
   //lineconnector
   const x1 = circlex;
   const y1 = circley;
-  const x2 = barChartXScale(1100000);
+  const x2 = barChartXScale(1200000);
   const y2 = y1 + 20;
 
   annotation.append("line")
@@ -1114,7 +1114,7 @@ function createAnnotationPrematurity() {
 
   text = "Since 2011 prematurity has become the most leading cause of child mortality worldwide"
 
-  const textdx = 20;
+  const textdx = 10;
   const textdy = -20;
 
   const left = getBarChartCanvasX()+ x2 + textdx;
@@ -1207,7 +1207,7 @@ function createAnnotationDiarrhoealMalaria() {
   const text = "Diarrhoeal diseases and malaria have dropped their ranks  "
        + "in the causes of child mortality list"
 
-  const textdx = 20;
+  const textdx = 10;
   const textdy = -10;
 
   const left = getBarChartCanvasX()+ x2  + textdx;
@@ -1274,7 +1274,7 @@ function createAnnotationTotalMortality() {
        + "by 45.8%";
 
   const textdx = - (rect_x2 - rect_x1 ) *0.75 / 2;
-  const textdy = -60;
+  const textdy = -55;
 
   const left = getBarChartCanvasX()+ x2 + textdx;
   const top = getBarChartCanvasY() + y2 + textdy;
