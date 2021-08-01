@@ -108,25 +108,25 @@ tr{
 
 /*-- Scatter plot color based on regions */
 .southasia{
-  fill: yellow;
+  fill: #EDC948;
 }
 .eastasiapacific{
-  fill: blue;
+  fill: #4E79A7;
 }
 .europecentralasia{
-  fill: orange;
+  fill: #F28E2B;
 }
 .latinamericacaribbean{
-  fill: red;
+  fill: #E15759;
 }
 .middleeastnorthafrica{
-  fill: lightblue;
+  fill: #76B7B2;
 }
 .northamerica{
-  fill: green;
+  fill: #59A14F;
 }
 .subsaharanafrica{
-  fill: purple;
+  fill: #B07AA1;
 }
 
 #scatterplottooltip, #barcharttooltip {
