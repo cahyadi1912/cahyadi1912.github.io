@@ -432,14 +432,14 @@ function simulateProgressScatterPlot(year) {
   d3.select("#scatterplotsvg").select("#scatterplotcanvas").selectAll(".scatterplotdatapoint")
   .data(data)
   .transition()
-  .duration(500)
+  .duration(1500)
   .attr("cx", function(d, i) { return (d.GDPPerCapita > 0) ? scatterPlotXScale(d.GDPPerCapita) : 0; } )
   .attr("cy", function(d, i) { return (d.Value > 0) ? scatterPlotYScale(d.Value) : scatterPlotYScale(scatterPlotHeight); } )
   .attr("r", 6 )
   .style("visibility", function(d){ return (d.Value == 0 || d.GDPPerCapita == 0) ? "hidden" : "visible"
   })
   .on("end", function() {
-    count = count - 1;
+    count = count - 1;    
     if ( selectedPageNr != 2 ) { initializePage }
     else if ( count == 0 && selectedYear < 2017 ) { simulateProgressScatterPlot(selectedYear + 1) };
   })
@@ -693,7 +693,7 @@ function simulateProgressBarChart(year) {
   d3.select("#barchartsvg").select("#barchartcanvas").selectAll(".barchartdatapoint")
   .data(data)
   .transition()
-  .duration(500)
+  .duration(1500)
   .attr("x", 0 )
   .attr("y", function(d, i) { return barChartYScale(d.CauseOfDeath) + 2; })
   .attr("width", function(d, i){ return barChartXScale(d.Value); } )
@@ -716,7 +716,7 @@ function simulateProgressBarChart(year) {
   d3.select("#barchartsvg").select("#barchartcanvas").selectAll(".barchartlabelvalue")
   .data(data)
   .transition()
-  .duration(500)
+  .duration(1500)
   .attr('x', function(d) { return barChartXScale(d.Value) + 5; } )
   .attr('y', function(d) {return barChartYScale(d.CauseOfDeath) + barChartYScale.bandwidth() / 2 + 5; })
   .style("text-anchor", "start")
