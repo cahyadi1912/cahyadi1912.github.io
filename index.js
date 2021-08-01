@@ -372,10 +372,8 @@ function createScatterPlot(year) {
   .append("circle")
   .attr("class", function(d) { return getRegionClass(d.Region) + " scatterplotdatapoint"; })
   .attr("cx", function(d, i) { return (d.GDPPerCapita > 0) ? scatterPlotXScale(d.GDPPerCapita) : 0; } )
-  .attr("cy", function(d, i) { return (d.Value > 0) ? scatterPlotYScale(d.Value) : scatterPlotYScale(scatterPlotHeight); } )
-  .attr("r", 6 )
-  .style("visibility", function(d){ return (d.Value == 0 || d.GDPPerCapita == 0) ? "hidden" : "visible"
-  })
+  .attr("cy", function(d, i) { return (d.Value > 0) ? scatterPlotYScale(d.Value) : scatterPlotHeight; } )
+  .attr("r", function(d, i) { return (d.Value > 0 && d.GDPPerCapita > 0) ? 6 : 0;  } ) //We hide  0 data values
   .on("mouseover", function(d, i){
     const text1 = "Country <br> Region <br> GDP per capita <br> Mortality <br> Population <br>"
     const text2 = ": <strong>" + d.CountryName + "</strong><br>"
@@ -419,11 +417,26 @@ function simulateProgressScatterPlot(year) {
 
   var newdata = scatterPlotDataset.filter(d => d.Year==selectedYear);
 
+  // The following is to make sure that the new data is sorted correctly
+  // so that is linked to the correct circle components
   var data = []
-  prevdata = d3.select("#scatterplotsvg").select("#scatterplotcanvas").selectAll(".scatterplotdatapoint").data();
+  var scatterPlotDataPoints = d3.selectAll(".scatterplotdatapoint");
+  const prevdata = scatterPlotDataPoints.data();
+
+  var i = 0;
   prevdata.forEach(function (prev) {
-    arr = newdata.filter(e => e.CountryCode == prev.CountryCode);
-    data.push(arr[0])
+    var dataElement = newdata.filter(e => e.CountryCode == prev.CountryCode)[0];
+    data.push(dataElement)
+
+    // If previously a country has zero data values and now it should appear in the chart,
+    // we set the cx and cy position according to the new value before D3 transition
+    // so that the transition is done based on radius instead of cx and cy position
+    if ( (prev.Value == 0 || prev.GDPPerCapita == 0)
+          && (dataElement.Value > 0 && dataElement.GDPPerCapita > 0) ) {
+      d3.select(scatterPlotDataPoints.nodes()[i]).attr("cx", scatterPlotXScale(dataElement.GDPPerCapita));
+      d3.select(scatterPlotDataPoints.nodes()[i]).attr("cy", scatterPlotYScale(dataElement.Value));
+    }
+    i+=1;
   })
 
 
@@ -433,13 +446,11 @@ function simulateProgressScatterPlot(year) {
   .data(data)
   .transition()
   .duration(1500)
-  .attr("cx", function(d, i) { return (d.GDPPerCapita > 0) ? scatterPlotXScale(d.GDPPerCapita) : 0; } )
-  .attr("cy", function(d, i) { return (d.Value > 0) ? scatterPlotYScale(d.Value) : scatterPlotYScale(scatterPlotHeight); } )
-  .attr("r", 6 )
-  .style("visibility", function(d){ return (d.Value == 0 || d.GDPPerCapita == 0) ? "hidden" : "visible"
-  })
+  .attr("cx", function(d, i) { return (d.GDPPerCapita > 0) ? scatterPlotXScale(d.GDPPerCapita) : d3.select(this).attr("cx"); } ) //We maintain current value of it is 0
+  .attr("cy", function(d, i) { return (d.Value > 0) ? scatterPlotYScale(d.Value) : d3.select(this).attr("cy"); } ) //We maintain current value of it is 0
+  .attr("r", function(d, i) { return (d.Value > 0 && d.GDPPerCapita > 0) ? 6 : 0;  } )
   .on("end", function() {
-    count = count - 1;    
+    count = count - 1;
     if ( selectedPageNr != 2 ) { initializePage }
     else if ( count == 0 && selectedYear < 2017 ) { simulateProgressScatterPlot(selectedYear + 1) };
   })
